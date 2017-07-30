@@ -4,6 +4,7 @@ var firstName = [];
 var rating = [];
 var feedbackFor = [];
 var graph1 = {};
+var graph1ArrayOfObjects = [];
 var graph2 = {};
 
 $(document).ready(function(){
@@ -18,18 +19,22 @@ $(document).ready(function(){
                 i++;
             }
         completeObjArray = remove_duplicates(objArray);
-        
+
         storeIndividualDetails(completeObjArray);
         
         graph1 = createGraph1Data(feedbackFor);
         
+        graph1ArrayOfObjects = createFromData(graph1)
+        
         console.log(graph1);/////////////////
         
-        graph2 = createGraph2DataStructure(graph1);
+        console.log(graph1ArrayOfObjects);
         
-        graph2 = createGraph2DataValues(graph2);
+        //graph2 = createGraph2DataStructure(graph1);
         
-        console.log(graph2);
+        //graph2 = createGraph2DataValues(graph2);
+        
+        //console.log(graph2);
     });
     
     
@@ -81,6 +86,20 @@ function createGraph1Data(feedbackFor){
         }
     return data;
 }
+
+function createFromData(graph1){
+    var data = [];
+    var i =0;
+    for(key in graph1){
+        data[i] = {
+            'x' : key,
+            'y' : graph1[key]
+        }
+        i++;
+    }
+    return data;
+}
+
 
 function createGraph2DataStructure(graph1){
     var data = {};
