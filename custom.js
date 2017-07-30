@@ -4,6 +4,7 @@ var firstName = [];
 var rating = [];
 var feedbackFor = [];
 var graph1 = {};
+var graph2 = {};
 
 $(document).ready(function(){
 
@@ -24,6 +25,11 @@ $(document).ready(function(){
         
         console.log(graph1);/////////////////
         
+        graph2 = createGraph2DataStructure(graph1);
+        
+        graph2 = createGraph2DataValues(graph2);
+        
+        console.log(graph2);
     });
     
     
@@ -74,4 +80,31 @@ function createGraph1Data(feedbackFor){
             }
         }
     return data;
+}
+
+function createGraph2DataStructure(graph1){
+    var data = {};
+    for(key in graph1){
+        data[key] = {
+            '1' : 0,
+            '2' : 0,
+            '3' : 0,
+            '4' : 0,
+            '5' : 0
+        } 
+    }
+    return data;
+}
+
+function createGraph2DataValues(graph2){
+    for(key in graph2){
+        for(var i=0;i<feedbackFor.length;i++)
+            {
+                if(key == feedbackFor[i])
+                    {
+                        graph2[key][rating[i]] = graph2[key][rating[i]] + 1 ;
+                    }
+            }
+    }
+    return graph2;
 }
