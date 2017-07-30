@@ -26,15 +26,17 @@ $(document).ready(function(){
         
         graph1ArrayOfObjects = createFromData(graph1)
         
-        console.log(graph1);/////////////////
+        console.log(graph1);
         
         console.log(graph1ArrayOfObjects);
         
-        //graph2 = createGraph2DataStructure(graph1);
+        /* for graph 2
+        graph2 = createGraph2DataStructure(graph1);
         
         //graph2 = createGraph2DataValues(graph2);
         
-        //console.log(graph2);
+        console.log(graph2);
+        */ 
     });
     
     
@@ -100,7 +102,7 @@ function createFromData(graph1){
     return data;
 }
 
-
+/* for graph 2
 function createGraph2DataStructure(graph1){
     var data = {};
     for(key in graph1){
@@ -127,3 +129,4 @@ function createGraph2DataValues(graph2){
     }
     return graph2;
 }
+*/
