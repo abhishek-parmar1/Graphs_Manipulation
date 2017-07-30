@@ -1,7 +1,7 @@
 var objArray = [];
 var datesDict = {};
 var graph3Data = [];
-var studentsDict = {};
+var namesDict = {};
 var graph4Data = [];
 
 $(document).ready(function(){
@@ -18,17 +18,11 @@ $(document).ready(function(){
         
         //console.log(objArray);
         
-        storeIndividualDates(objArray);
-    
-        ////////////    
+        storeIndividualDates(objArray);    
         
         storeIndividualNames(objArray);
          
     });
-    
-    
-    
-    
 });
 
 // graph 3 data retrival
@@ -75,22 +69,36 @@ function storeIndividualNames(objArray){
             var name = objArray[i].first_name + " " + objArray[i].last_name ;
             names.push(name);
         }
-    console.log(names);
     
+    //console.log(names);
+
+    for(var i=0;i<names.length;i++)
+        {
+            if( Object.keys(namesDict).indexOf(names[i]) != -1)
+                {
+                    namesDict[names[i]] = namesDict[names[i]] + 1;
+                }
+            else{
+                namesDict[names[i]] = 1;
+            }
+        }
+    
+    //console.log(namesDict);
+    
+    var i=0;
+    for(key in namesDict){
+        graph4Data[i] = {
+            'x' : key,
+            'y' : namesDict[key]
+        }
+        i++;
+    }
+    
+    console.log(graph4Data);
 }
 
 
 
 
-for(var i=0;i<names.length;i++)
-        {
-            if( Object.keys(datesDict).indexOf(dates[i]) != -1)
-                {
-                    datesDict[dates[i]] = datesDict[dates[i]] + 1;
-                }
-            else{
-                datesDict[dates[i]] = 1;
-            }
-        }
     
     
